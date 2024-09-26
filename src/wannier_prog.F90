@@ -95,6 +95,9 @@ program wannier
   nk => common_data%num_kpts
   nn => common_data%kmesh_info%nntot
 
+  allocate(character(50) :: progname)
+  allocate(character(50) :: seedname)
+  allocate(character(50) :: cpstatus)
   progname = 'wannier90' ! https://gcc.gnu.org/bugzilla/show_bug.cgi?id=91442
   call io_commandline(progname, ld, pp, seedname)
 
@@ -110,10 +113,10 @@ program wannier
 #endif
 
   ! open main output file
-  open (newunit=stdout, file=seedname//'.wout', status="replace")
+  open (newunit=stdout, file=TRIM(seedname)//'.wout', status="replace")
   ! open main error file
   call w90_get_fortran_stderr(stderr)
-  if (rank == 0) open (newunit=stderr, file=seedname//'.werr', status="replace")
+  if (rank == 0) open (newunit=stderr, file=TRIM(seedname)//'.werr', status="replace")
 
   call io_date(cdate, ctime)
   if (rank == 0) write (stderr, *) 'Wannier90: Execution started on ', cdate, ' at ', ctime
