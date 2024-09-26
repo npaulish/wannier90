@@ -1896,7 +1896,7 @@ contains
     real(kind=dp), intent(in) :: real_lattice(3, 3)
 
     character(len=*), intent(in)  :: seedname
-    character(len=*), intent(inout) :: checkpoint
+    character(len=20), intent(inout) :: checkpoint
 
     logical, intent(in) :: ispostw90 ! Are we running postw90?
     logical, intent(out) :: have_disentangled
