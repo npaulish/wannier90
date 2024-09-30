@@ -95,9 +95,9 @@ program wannier
   nk => common_data%num_kpts
   nn => common_data%kmesh_info%nntot
 
-  allocate(character(50) :: progname)
-  allocate(character(50) :: seedname)
-  allocate(character(50) :: cpstatus)
+  allocate (character(50) :: progname)
+  allocate (character(50) :: seedname)
+  allocate (character(50) :: cpstatus)
   progname = 'wannier90' ! https://gcc.gnu.org/bugzilla/show_bug.cgi?id=91442
   call io_commandline(progname, ld, pp, seedname)
 
